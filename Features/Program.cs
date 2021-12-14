@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Features.Linq;
 
 namespace Features
 {
@@ -32,26 +30,30 @@ namespace Features
                 new Employee{ Id = 6, Name = "Stark"}
             };
 
+            Console.WriteLine($"Number of Employees in Developers Dept : {developers.Count()}");        //Using the Extension Method that we have defined. If we use Linq directive also, it will give an error becoz of Ambiguous Call.
             foreach (var person in developers)
             {
-                Console.WriteLine(person.Id + ":" + person.Name);
+                Console.WriteLine("Id "+ person.Id + ": " + person.Name);
             }
 
+            Console.WriteLine($"Number of Employees in Sales Dept : {sales.Count()}");   
             foreach (var person in sales)
             {
-                Console.WriteLine(person.Id + ":" + person.Name);
+                Console.WriteLine("Id " + person.Id + ": " + person.Name);
             }
 
+            Console.WriteLine($"Number of Employees in Advertising Dept : {advertising.Count()}"); 
             IEnumerator<Employee> enumerator = advertising.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                Console.WriteLine(enumerator.Current.Id + ":" + enumerator.Current.Name);
+                Console.WriteLine("Id " + enumerator.Current.Id + ": " + enumerator.Current.Name);
             }
 
+            Console.WriteLine($"Number of Employees in Management Dept : {management.Count()}");
             enumerator = management.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                Console.WriteLine(enumerator.Current.Id + ":" + enumerator.Current.Name);
+                Console.WriteLine("Id " + enumerator.Current.Id + ": " + enumerator.Current.Name);
             }
             Console.ReadKey();
         }
