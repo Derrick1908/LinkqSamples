@@ -96,11 +96,23 @@ namespace Features
                 Console.WriteLine(employee.Name);
             }
 
-            var query = developers.Where(e => e.Name.Length == 5)
-                                  .OrderBy(e => e.Name);
+            var query = developers.Where(e => e.Name.Length == 5)       //LINQ Method Syntax
+                                  .OrderBy(e => e.Name)
+                                  .Select(e => e);
 
-            Console.WriteLine("Sorting of All Employees in the Developer Dept (Name Length is 5 Letters only) by Ascending Order ");
+            var query2 = from developer in developers                   //LINQ Query Syntax
+                         where developer.Name.Length == 5
+                         orderby developer.Name
+                         select developer;
+
+            Console.WriteLine("Sorting of All Employees in the Developer Dept (Name Length is 5 Letters only) by Ascending Order (using Method Syntax) ");
             foreach (var employee in query)
+            {
+                Console.WriteLine(employee.Name);
+            }
+
+            Console.WriteLine("Sorting of All Employees in the Developer Dept (Name Length is 5 Letters only) by Ascending Order (using Query Syntax) ");
+            foreach (var employee in query2)
             {
                 Console.WriteLine(employee.Name);
             }
