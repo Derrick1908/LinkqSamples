@@ -34,12 +34,12 @@ namespace Features
                 new Employee{ Id = 5, Name = "Ridley" }
             };
 
-            List<Employee> sales = new List<Employee>()
+            var sales = new List<Employee>()
             {
                 new Employee{ Id = 3, Name = "Alex" }
             };
 
-            IEnumerable<Employee> management = new List<Employee>()
+            var management = new List<Employee>()
             {
                 new Employee{ Id = 6, Name = "Stark"},
                 new Employee{ Id = 7, Name = "Ben"}
@@ -96,9 +96,11 @@ namespace Features
                 Console.WriteLine(employee.Name);
             }
 
+            var query = developers.Where(e => e.Name.Length == 5)
+                                  .OrderBy(e => e.Name);
+
             Console.WriteLine("Sorting of All Employees in the Developer Dept (Name Length is 5 Letters only) by Ascending Order ");
-            foreach (var employee in developers.Where(e => e.Name.Length == 5)
-                                               .OrderBy(e => e.Name))
+            foreach (var employee in query)
             {
                 Console.WriteLine(employee.Name);
             }
